@@ -1,0 +1,35 @@
+/*  MICROTHEMER STYLES  */
+
+
+/*= Conteúdo ================= */
+
+/** Conteúdo >> Cardápio home **/
+.cardapiohome .uagb-rm__title-wrap {
+	width: 250px !important;
+}
+
+/** Conteúdo >> Preço cardápio home **/
+.uagb-rm__price-wrap {
+	width: 80px !important;
+}
+
+/** Conteúdo >> Botão Enviar **/
+#wpforms-submit-106 {
+	color: rgb(255, 255, 255) !important;
+	background-color: rgb(255, 136, 0) !important;
+	width: 170px !important;
+	border-style: none !important;
+	border-radius: 30px !important;
+}
+
+/** Conteúdo >> Botão enviar houver **/
+#wpforms-submit-106:hover {
+	background-color: rgb(242, 215, 82) !important;
+}
+
+/** Conteúdo >> Alinhamento botão enviar **/
+.wpforms-submit-container {
+	text-align: center !important;
+	width: 60% !important;
+}
+
