@@ -1787,6 +1787,11 @@ function wp_mkdir_p( $target ) {
 		return @is_dir( $target );
 	}
 
+	// Do not allow path traversals.
+	if ( false !== strpos( $target, '../' ) || false !== strpos( $target, '..' . DIRECTORY_SEPARATOR ) ) {
+		return false;
+	}
+
 	// We need to find the permissions of the parent folder that exists and inherit that.
 	$target_parent = dirname( $target );
 	while ( '.' != $target_parent && ! is_dir( $target_parent ) && dirname( $target_parent ) !== $target_parent ) {
@@ -7165,12 +7170,3 @@ function is_wp_version_compatible( $required ) {
 function is_php_version_compatible( $required ) {
 	return empty( $required ) || version_compare( phpversion(), $required, '>=' );
 }
-
-// Funções personalizadas
-add_action( 'init', function() {
-
-	add_shortcode( 'site_url', function( $atts = null, $content = null ) {
-		return site_url();
-	} );
-
-} );

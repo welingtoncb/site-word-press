@@ -3,7 +3,7 @@
  * Plugin Name: Companion Auto Update
  * Plugin URI: http://codeermeneer.nl/portfolio/companion-auto-update/
  * Description: This plugin auto updates all plugins, all themes and the wordpress core.
- * Version: 3.4.2
+ * Version: 3.4.2.1
  * Author: Papin Schipper
  * Author URI: http://codeermeneer.nl/
  * Contributors: papin
@@ -223,6 +223,14 @@ function cau_add_widget() {
 add_action( 'wp_dashboard_setup', 'cau_add_widget' );
 
 function cau_widget() {
+
+	if( date( "Y" ) < '2020' ) {
+		echo '<div style="background: #CDE4E3; color: #273654; padding: 15px; border-radius: 5px;">
+			<p style="margin-top: 0;"><strong>For every $10 you donate to one of our plugins we’ll donate $10 to team trees.</strong></p>
+			<img src="https://teamtrees.org/images/logo-teamtrees-full.svg">
+			<p style="margin-bottom: 0;"><a href="https://codeermeneer.nl/blog/companion-supports-teamtrees/" target="_blank" style="color: #273654; font-weight: bold; text-decoration: underline;">Read our blog-post</a></p>
+		</div>';
+	}
 
 	echo '<style>table.autoupdatewidget { border: 0px solid transparent; border-bottom: 1px solid #EEEEEE; margin: 0 -12px; width: calc(100% + 24px); } table.autoupdatewidget tr td { border-top: 1px solid #EEEEEE; padding: 9px 12px 5px 12px; background: #FAFAFA; } .cau_divide { display: inline-block; color: #E7E0DF; padding: 0 2px; } </style>';
 	echo '<p>'.__('Below are the last 7 updates ran on this site. Includes plugins and themes, both automatically updated and manually updated.', 'companion-auto-update').'</p>';

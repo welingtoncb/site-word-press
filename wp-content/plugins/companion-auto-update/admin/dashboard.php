@@ -194,4 +194,16 @@
 		<p style="font-size: 12px; color: #BDBDBD;">Donations via PayPal. Amount can be changed.</p>
 	</div>
 
+	<?php
+
+	if( date( "Y" ) < '2020' ) {
+		echo '<div style="background: #CDE4E3; color: #273654; padding: 15px; border-radius: 5px;">
+			<p style="margin-top: 0;"><strong>For every $10 you donate to one of our plugins we’ll donate $10 to team trees.</strong></p>
+			<img src="https://teamtrees.org/images/logo-teamtrees-full.svg">
+			<p style="margin-bottom: 0;"><a href="https://codeermeneer.nl/blog/companion-supports-teamtrees/" target="_blank" style="color: #273654; font-weight: bold; text-decoration: underline;">Read our blog-post</a></p>
+		</div>';
+	}
+
+	?>
+
 </div>

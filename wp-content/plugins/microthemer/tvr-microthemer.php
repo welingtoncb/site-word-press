@@ -5,7 +5,7 @@ Plugin URI: https://themeover.com/microthemer
 Text Domain: microthemer
 Domain Path: /languages
 Description: Microthemer is a feature-rich visual design plugin for customizing the appearance of ANY WordPress Theme or Plugin Content (e.g. posts, pages, contact forms, headers, footers, sidebars) down to the smallest detail. For CSS coders, Microthemer is a proficiency tool that allows them to rapidly restyle a WordPress theme or plugin. For non-coders, Microthemer's intuitive interface and "Double-click to Edit" feature opens the door to advanced theme and plugin customization.
-Version: 5.8.2.4
+Version: 5.8.3.3
 Author: Themeover
 Author URI: https://themeover.com
 */
@@ -160,7 +160,7 @@ if ( is_admin() ) {
 		// define
 		class tvr_microthemer_admin {
 
-			var $version = '5.8.2.4';
+			var $version = '5.8.3.3';
 			var $db_chg_in_ver = '5.5.0.0';
 			var $locale = '';
 			var $time = 0;
@@ -2676,7 +2676,7 @@ if ( is_admin() ) {
 				$data_size = round(strlen($serialized_data)/1000).'KB';
 				// $wpdb->insert (columns and data should not be SQL escaped): https://developer.wordpress.org/reference/classes/wpdb/insert/
 				$rows_affected = $wpdb->insert( $table_name, array(
-						'time' => current_time('mysql'), // use blogs local time - doesn't work on Nelson's site
+						'time' => current_time('mysql', false), // use blogs local time - doesn't work on Nelson's site
 						//'time' => $this->adjust_unix_timestamp_for_local(time(), 'mysql'), // nor does this
 						//'time' => date_i18n('Y-m-d H:i:s'), // or this
 
@@ -2718,7 +2718,7 @@ if ( is_admin() ) {
 			function human_time_diff( $from, $to = '' ) {
 
 				if ( empty( $to ) ) {
-					$to = current_time( 'timestamp' ); // use blogs local time
+					$to = current_time( 'timestamp', false ); // use blogs local time
 				}
 
 				$diff = (int) abs( $to - $from );
@@ -2770,9 +2770,7 @@ if ( is_admin() ) {
 				// get the full array of revisions
 				global $wpdb;
 				$table_name = $wpdb->prefix . "micro_revisions";
-				//$revs = $wpdb->get_results("select id, user_action, data_size, date_format(time, '%D %b %Y %H:%i') as datetime
-				$revs = $wpdb->get_results("select id, user_action, data_size, unix_timestamp(time) as unix_timestamp
-				from $table_name order by id desc");
+				$revs = $wpdb->get_results("select id, user_action, data_size, time from $table_name order by id desc");
 				$total_rows = $wpdb->num_rows;
 				// if no revisions, explain
 				if ($total_rows == 0) {
@@ -2804,13 +2802,9 @@ if ( is_admin() ) {
 				$i = 0;
 				foreach ($revs as $rev) {
 
-					// adjust unix timestamp for blog's GMT timezone offset - no this doesn't make sense
-					//$local_timestamp = $this->adjust_unix_timestamp_for_local($rev->unix_timestamp);
-
-					$local_timestamp = $rev->unix_timestamp;
-
+					$local_timestamp = strtotime($rev->time);
 					$time_ago = $this->human_time_diff($local_timestamp);
-					//$time_ago = $this->getTimeSince($rev->timestamp);
+
 					// get traditional save or new history which will be in json obj
 					$user_action = $rev->user_action;
 					$rev_icon = $main_class = '';
@@ -3013,8 +3007,8 @@ if ( is_admin() ) {
 			// convert e.g. /path/piece/section/../file.txt to /path/piece/file.txt
 			function normalize_path($str){
 				$N = 0;
-				$A =explode("/",preg_replace("/\/\.\//",'/',$str));  // remove current_location
-				$B=[];
+				$A = explode("/",preg_replace("/\/\.\//",'/',$str));  // remove current_location
+				$B = array();
 				for($i = sizeof($A)-1;$i>=0;--$i){
 					if(trim($A[$i]) ===".."){
 						$N++;
@@ -8179,6 +8173,22 @@ if ( is_admin() ) {
 				return $eq_str;
 			}
 
+			// some versions of php don't like empty(trim($input)) so this is workaround
+			function trimmedEmpty($input){
+
+			    if (empty($input)){
+			        return true;
+                }
+
+				$input = trim($input);
+
+				if (empty($input)){
+					return true;
+				}
+
+				return false;
+            }
+
 			// update active-styles.css
 			function update_active_styles2($activated_from, $context = '') {
 
@@ -8207,7 +8217,7 @@ if ( is_admin() ) {
 				// check if hand coded have been set - output before other css
 				$scss_custom_code = '';
 				$custom_code = '';
-				if ( !empty(trim($this->options['non_section']['hand_coded_css']))){
+				if ( !$this->trimmedEmpty($this->options['non_section']['hand_coded_css']) ){
 
 				    // format comment
 				    $name = esc_attr_x('Full Code Editor CSS', 'CSS comment', 'microthemer');
@@ -10557,7 +10567,7 @@ if (!is_admin()) {
 			var $preferencesName = 'preferences_themer_loader';
 			// @var array $preferences Stores the ui options for this plugin
 			var $preferences = array();
-			var $version = '5.8.2.4';
+			var $version = '5.8.3.3';
 			var $microthemeruipage = 'tvr-microthemer.php';
 			var $mt_front_nonce = 'mt-temp-nonce';
 			var $file_stub = '';

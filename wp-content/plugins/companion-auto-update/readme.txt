@@ -3,15 +3,18 @@ Contributors: Papin, qweb
 Donate link: https://www.paypal.me/dakel/10/
 Tags: auto, automatic, background, update, updates, updating, automatic updates, automatic background updates, easy update, wordpress update, theme update, plugin update, up-to-date, security, update latest version, update core, update wp, update wp core, major updates, minor updates, update to new version, update core, update plugin, update plugins, update plugins automatically, update theme, plugin, theme, advance, control, mail, notifations, enable
 Requires at least: 3.5.0
-Tested up to: 5.2
+Tested up to: 5.3
 Requires PHP: 5.1
-Stable tag: 3.4.2
+Stable tag: 3.4.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin automatically updates all plugins, all themes and the wordpress core in the background.
 
 == Description ==
+
+= For every $10 you donate to one of our plugins we’ll donate $10 to team trees. =
+[Read our blog post](https://codeermeneer.nl/blog/companion-supports-teamtrees/)
 
 = Keep your website safe! =
 We understand that you might not always be able to check if your wordpress site has any updates that need to be installed, especially when you maintain multiple websites keeping them up-to-date can be a lot of work.
@@ -51,17 +54,10 @@ Settings can be found trough Tools > Auto Updater
 
 == Frequently Asked Questions ==
 
-= Can I disable auto updating for certain plugins? =
+= Check our website for the FAQ =
 
-Yes. You can control auto-updating per plugin via the plugin filter. 
+[https://codeermeneer.nl/documentation/auto-update/faq-auto-updater/](https://codeermeneer.nl/documentation/auto-update/faq-auto-updater/)
 
-= I'm using cPanel and auto-updating doesn't work =
-
-A few years ago cPanel added a line by default that would disable auto-updating. According to cPanel this can be fixed by removing the line "AUTOMATIC_UPDATER_DISABLED" from your wp-config file.
-
-= My theme by Elegant Themes is not updating =
-
-For some reason this plugin seems to have trouble with updating themes by Elegant Themes on some installs. I've reached out to Elegant Themes and they couldn't help me. They said that if you're experiencing problems with it you should contact them and they would help you with it.
 
 == Screenshots ==
 

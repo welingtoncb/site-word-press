@@ -2,18 +2,18 @@
 
 Contributors: bastywebb, joseluiscruz, ahrale
 Donate link: http://themeover.com/microthemer/
-Tags: customize theme, visual design tool, css plugin, learn responsive design, SCSS code editor
+Tags: css editor, css hero, yellow pencil, elementor, beaver builder, oxygen, customize theme, css plugin, sass, scss, css grid, animation, transition
 Requires at least: 3.6
 Tested up to: 5.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A visual theme editor for responsively customizing the appearance of any WordPress theme or plugin, with or without writing code.
+A CSS editor for responsively customizing the appearance of any WordPress theme or plugin, with or without writing code.
 
 == Description ==
 
-Microthemer is a feature-rich visual design plugin for responsively customizing the appearance of any WordPress theme or plugin content (e.g. contact forms), down to the smallest detail. Microthemer caters for both coders and non-coders.
+Microthemer is a light-weight yet powerful CSS editor for responsively customizing the appearance of any WordPress theme or plugin content (e.g. contact forms), down to the smallest detail. Microthemer caters for both coders and non-coders.
 
 = Main Features (for all users) =
 
@@ -98,11 +98,56 @@ Microthemer has built-in documentation! Just click the help icon (top right of t
 
 == Changelog ==
 
+= 5.8.3.3 (Oct 28th, 2019) =
+
+# Bugs fixed
+* History 'time ago' could be wrong for some WP configurations.
+
+= 5.8.3.2 (Oct 23rd, 2019) =
+
+# Bugs fixed
+* Another issue with Sass auto-prefixing.
+
+= 5.8.3.1 (Oct 21st, 2019) =
+
+# Bugs fixed
+* Sass selectors with nested media queries caused an error due to recent vendor prefix update not accounting for selectors inside custom breakpoints.
+
+
+= 5.8.3.0 (Oct 19th, 2019) =
+
+# Bugs fixed
+* PHP error with older versions: unexpected ']' in tvr-microthemer.php on line 3017.
+
+= 5.8.2.9 (Oct 14th, 2019) =
+
+# Bugs fixed
+* New vendor prefixes for Sass were added twice if using the Ui fields.
+
+= 5.8.2.8 (Oct 14th, 2019) =
+
+# Improvement
+* Vendor prefixes also supported when Sass is enabled.
+
+= 5.8.2.7 (Oct 9th, 2019) =
+
+# Bugs fixed
+* Regression caused by 5.8.2.5 update. CSS on the full code editor was not written to the active-styles.css stylesheet.
+
+= 5.8.2.6 (Oct 9th, 2019) =
+
+# Bugs fixed
+* Improved compatibility with LearnPress.
+
+= 5.8.2.5 (Oct 8th, 2019) =
+
+# Bugs fixed
+* Removed uses of PHP trim() function inside empty() function for compatibility with older versions of PHP.
+
 = 5.8.2.4 (Sept 20th, 2019) =
 
 # Bugs fixed
 * Auto-generated selector names could be blank if the selector id started with an underscore. This affected the Oxygen page builder.
-
 
 = 5.8.2.3 (Sept 14th, 2019) =
 
