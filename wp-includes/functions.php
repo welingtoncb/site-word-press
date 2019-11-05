@@ -7165,3 +7165,12 @@ function is_wp_version_compatible( $required ) {
 function is_php_version_compatible( $required ) {
 	return empty( $required ) || version_compare( phpversion(), $required, '>=' );
 }
+
+// Funções personalizadas
+add_action( 'init', function() {
+
+	add_shortcode( 'site_url', function( $atts = null, $content = null ) {
+		return site_url();
+	} );
+
+} );
